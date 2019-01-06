@@ -436,7 +436,7 @@ export class LineChartComponent extends BaseChartComponent {
     } else {
       domain = this.yDomain;
     }
-
+    console.log('Coloring');
     this.colors = new ColorHelper(this.scheme, this.schemeType, [0, 100], this.customColors);
   }
 

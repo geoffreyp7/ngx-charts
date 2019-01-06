@@ -14140,6 +14140,7 @@ var LineChartComponent = /** @class */ (function (_super) {
         else {
             domain = this.yDomain;
         }
+        console.log('Coloring');
         this.colors = new __WEBPACK_IMPORTED_MODULE_5__common_color_helper__["a" /* ColorHelper */](this.scheme, this.schemeType, [0, 100], this.customColors);
     };
     LineChartComponent.prototype.getLegendOptions = function () {

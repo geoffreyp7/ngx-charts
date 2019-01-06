@@ -10640,6 +10640,7 @@ var LineChartComponent = /** @class */ (function (_super) {
         else {
             domain = this.yDomain;
         }
+        console.log('Coloring');
         this.colors = new ColorHelper(this.scheme, this.schemeType, [0, 100], this.customColors);
     };
     LineChartComponent.prototype.getLegendOptions = function () {
