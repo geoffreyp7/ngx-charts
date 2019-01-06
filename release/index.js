@@ -2297,7 +2297,7 @@ var BarHorizontal2DComponent = /** @class */ (function (_super) {
         }
         var min = Math.min.apply(Math, [0].concat(domain));
         var max = this.xScaleMax
-            ? Math.max.apply(Math, [this.xScaleMax].concat(domain)) : Math.max.apply(Math, domain);
+            ? Math.max.apply(Math, [this.xScaleMax].concat(domain)) : Math.max.apply(Math, [0].concat(domain));
         return [min, max];
     };
     BarHorizontal2DComponent.prototype.groupTransform = function (group) {
@@ -3335,7 +3335,7 @@ var BarHorizontalComponent = /** @class */ (function (_super) {
         var min = this.xScaleMin
             ? Math.min.apply(Math, [this.xScaleMin].concat(values)) : Math.min.apply(Math, [0].concat(values));
         var max = this.xScaleMax
-            ? Math.max.apply(Math, [this.xScaleMax].concat(values)) : Math.max.apply(Math, values);
+            ? Math.max.apply(Math, [this.xScaleMax].concat(values)) : Math.max.apply(Math, [0].concat(values));
         return [min, max];
     };
     BarHorizontalComponent.prototype.getYDomain = function () {
@@ -3847,7 +3847,7 @@ var BarVertical2DComponent = /** @class */ (function (_super) {
         }
         var min = Math.min.apply(Math, [0].concat(domain));
         var max = this.yScaleMax
-            ? Math.max.apply(Math, [this.yScaleMax].concat(domain)) : Math.max.apply(Math, domain);
+            ? Math.max.apply(Math, [this.yScaleMax].concat(domain)) : Math.max.apply(Math, [0].concat(domain));
         return [min, max];
     };
     BarVertical2DComponent.prototype.groupTransform = function (group) {
@@ -4886,7 +4886,7 @@ var BarVerticalComponent = /** @class */ (function (_super) {
         var min = this.yScaleMin
             ? Math.min.apply(Math, [this.yScaleMin].concat(values)) : Math.min.apply(Math, [0].concat(values));
         var max = this.yScaleMax
-            ? Math.max.apply(Math, [this.yScaleMax].concat(values)) : Math.max.apply(Math, values);
+            ? Math.max.apply(Math, [this.yScaleMax].concat(values)) : Math.max.apply(Math, [0].concat(values));
         return [min, max];
     };
     BarVerticalComponent.prototype.onClick = function (data) {
@@ -9129,7 +9129,7 @@ var GridPanelSeriesComponent = /** @class */ (function () {
     };
     GridPanelSeriesComponent.prototype.getGridPanels = function () {
         var _this = this;
-        return this.data.map(function (d, i) {
+        return this.data.map(function (d) {
             var offset;
             var width;
             var height;
@@ -14140,7 +14140,7 @@ var LineChartComponent = /** @class */ (function (_super) {
         else {
             domain = this.yDomain;
         }
-        this.colors = new __WEBPACK_IMPORTED_MODULE_5__common_color_helper__["a" /* ColorHelper */](this.scheme, this.schemeType, domain, this.customColors);
+        this.colors = new __WEBPACK_IMPORTED_MODULE_5__common_color_helper__["a" /* ColorHelper */](this.scheme, this.schemeType, [0, 100], this.customColors);
     };
     LineChartComponent.prototype.getLegendOptions = function () {
         var opts = {
@@ -14507,8 +14507,8 @@ var LineSeriesComponent = /** @class */ (function () {
             }
             return value;
         })
-            .y0(function (d) { return _this.yScale(d.min ? d.min : d.value); })
-            .y1(function (d) { return _this.yScale(d.max ? d.max : d.value); })
+            .y0(function (d) { return _this.yScale(typeof d.min === 'number' ? d.min : d.value); })
+            .y1(function (d) { return _this.yScale(typeof d.max === 'number' ? d.max : d.value); })
             .curve(this.curve);
     };
     LineSeriesComponent.prototype.getAreaGenerator = function () {

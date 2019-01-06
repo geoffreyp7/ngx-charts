@@ -437,7 +437,7 @@ export class LineChartComponent extends BaseChartComponent {
       domain = this.yDomain;
     }
 
-    this.colors = new ColorHelper(this.scheme, this.schemeType, domain, this.customColors);
+    this.colors = new ColorHelper(this.scheme, this.schemeType, [0, 100], this.customColors);
   }
 
   getLegendOptions() {
