@@ -2931,6 +2931,7 @@ var CircleSeriesComponent = /** @class */ (function () {
         return this.mapDataPointToCircle(this.data.series[indexActiveDataPoint], indexActiveDataPoint);
     };
     CircleSeriesComponent.prototype.mapDataPointToCircle = function (d, i) {
+        console.log('Mapping data point to circle');
         var seriesName = this.data.name;
         var value = d.value;
         var label = d.name;

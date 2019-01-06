@@ -126,6 +126,7 @@ export class CircleSeriesComponent implements OnChanges, OnInit {
   }
 
   mapDataPointToCircle(d: any, i: number): any {
+    console.log('Mapping data point to circle');
     const seriesName = this.data.name;
 
     const value = d.value;
