@@ -115,7 +115,7 @@ var LineSeriesComponent = /** @class */ (function () {
             var values = this.data.series.map(function (d) { return d.value; });
             var max = Math.max.apply(Math, values);
             var min = Math.min.apply(Math, values);
-            this.gradientStops = this.colors.getLinearGradientStops(max, min);
+            this.gradientStops = this.colors.getLinearGradientStops(100, 0);
             this.areaGradientStops = this.colors.getLinearGradientStops(max);
         }
         else {

@@ -184,7 +184,7 @@ export class LineSeriesComponent implements OnChanges {
       const values = this.data.series.map(d => d.value);
       const max = Math.max(...values);
       const min = Math.min(...values);
-      this.gradientStops = this.colors.getLinearGradientStops(max, min);
+      this.gradientStops = this.colors.getLinearGradientStops(100, 0);
       this.areaGradientStops = this.colors.getLinearGradientStops(max);
     } else {
       this.hasGradient = false;

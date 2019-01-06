@@ -10972,7 +10972,7 @@ var LineSeriesComponent = /** @class */ (function () {
             var values = this.data.series.map(function (d) { return d.value; });
             var max$$1 = Math.max.apply(Math, values);
             var min$$1 = Math.min.apply(Math, values);
-            this.gradientStops = this.colors.getLinearGradientStops(max$$1, min$$1);
+            this.gradientStops = this.colors.getLinearGradientStops(100, 0);
             this.areaGradientStops = this.colors.getLinearGradientStops(max$$1);
         }
         else {
