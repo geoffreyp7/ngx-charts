@@ -59,6 +59,7 @@ export class ColorHelper {
   }
 
   getColor(value) {
+    console.log('Getting color');
     if (this.scaleType === 'linear') {
       const valueScale = scaleLinear()
         .domain(this.domain)
