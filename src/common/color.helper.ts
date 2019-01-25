@@ -59,12 +59,12 @@ export class ColorHelper {
   }
 
   getColor(value) {
-    console.log('Getting color');
     if (this.scaleType === 'linear') {
       const valueScale = scaleLinear()
         .domain(this.domain)
         .range([0, 1]);
 
+      console.log('Got color: ' + this.scale(valueScale(value)));
       return (this.scale(valueScale(value)));
     } else {
 
@@ -160,6 +160,7 @@ export class ColorHelper {
       }
     }
 
+    console.log('Got stops: ' + stops);
     return stops;
   }
 }

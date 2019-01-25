@@ -46,11 +46,11 @@ var ColorHelper = /** @class */ (function () {
         return colorScale;
     };
     ColorHelper.prototype.getColor = function (value) {
-        console.log('Getting color');
         if (this.scaleType === 'linear') {
             var valueScale = scaleLinear()
                 .domain(this.domain)
                 .range([0, 1]);
+            console.log('Got color: ' + this.scale(valueScale(value)));
             return (this.scale(valueScale(value)));
         }
         else {
@@ -134,6 +134,7 @@ var ColorHelper = /** @class */ (function () {
                 }
             }
         }
+        console.log('Got stops: ' + stops);
         return stops;
     };
     return ColorHelper;
