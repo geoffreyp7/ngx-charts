@@ -29,6 +29,7 @@ var LineComponent = /** @class */ (function () {
     };
     LineComponent.prototype.updatePathEl = function () {
         var node = select(this.element.nativeElement).select('.line');
+        console.log(this.path);
         if (this.animations) {
             node
                 .transition().duration(750)

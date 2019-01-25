@@ -32,11 +32,11 @@ var LineSeriesComponent = /** @class */ (function () {
         if (this.hasGradient) {
             this.stroke = this.gradientUrl;
             var values = this.data.series.map(function (d) { return d.value; });
-            var max = Math.max.apply(Math, values);
-            var min = Math.min.apply(Math, values);
-            if (max === min) {
-                this.stroke = this.colors.getColor(max);
-            }
+            var max = 100; // Math.max(...values);
+            var min = 0; //Math.min(...values);
+            // if (max === min) {
+            //   this.stroke = this.colors.getColor(max);
+            // }
         }
         else {
             this.stroke = this.colors.getColor(this.data.name);
@@ -116,7 +116,7 @@ var LineSeriesComponent = /** @class */ (function () {
             var max = Math.max.apply(Math, values);
             var min = Math.min.apply(Math, values);
             this.gradientStops = this.colors.getLinearGradientStops(100, 0);
-            this.areaGradientStops = this.colors.getLinearGradientStops(max);
+            this.areaGradientStops = this.colors.getLinearGradientStops(100);
         }
         else {
             this.hasGradient = false;

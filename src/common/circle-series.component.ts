@@ -143,7 +143,7 @@ export class CircleSeriesComponent implements OnChanges, OnInit {
     }
 
     const cy = this.yScale(this.type === 'standard' ? value : d.d1);
-    const radius = 20;
+    const radius = 5;
     const height = this.yScale.range()[0] - cy;
     const opacity = 1;
 

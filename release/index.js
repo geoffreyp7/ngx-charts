@@ -8293,7 +8293,7 @@ var CircleSeriesComponent = /** @class */ (function () {
             cx = this.xScale(label);
         }
         var cy = this.yScale(this.type === 'standard' ? value : d.d1);
-        var radius = 20;
+        var radius = 5;
         var height = this.yScale.range()[0] - cy;
         var opacity = 1;
         var color;
@@ -14463,11 +14463,11 @@ var LineSeriesComponent = /** @class */ (function () {
         if (this.hasGradient) {
             this.stroke = this.gradientUrl;
             var values = this.data.series.map(function (d) { return d.value; });
-            var max = Math.max.apply(Math, values);
-            var min = Math.min.apply(Math, values);
-            if (max === min) {
-                this.stroke = this.colors.getColor(max);
-            }
+            var max = 100; // Math.max(...values);
+            var min = 0; //Math.min(...values);
+            // if (max === min) {
+            //   this.stroke = this.colors.getColor(max);
+            // }
         }
         else {
             this.stroke = this.colors.getColor(this.data.name);
@@ -14547,7 +14547,7 @@ var LineSeriesComponent = /** @class */ (function () {
             var max = Math.max.apply(Math, values);
             var min = Math.min.apply(Math, values);
             this.gradientStops = this.colors.getLinearGradientStops(100, 0);
-            this.areaGradientStops = this.colors.getLinearGradientStops(max);
+            this.areaGradientStops = this.colors.getLinearGradientStops(100);
         }
         else {
             this.hasGradient = false;
@@ -14667,6 +14667,7 @@ var LineComponent = /** @class */ (function () {
     };
     LineComponent.prototype.updatePathEl = function () {
         var node = Object(__WEBPACK_IMPORTED_MODULE_2_d3_selection__["select"])(this.element.nativeElement).select('.line');
+        console.log(this.path);
         if (this.animations) {
             node
                 .transition().duration(750)

@@ -2947,7 +2947,7 @@ var CircleSeriesComponent = /** @class */ (function () {
             cx = this.xScale(label);
         }
         var cy = this.yScale(this.type === 'standard' ? value : d.d1);
-        var radius = 20;
+        var radius = 5;
         var height = this.yScale.range()[0] - cy;
         var opacity = 1;
         var color;
@@ -10383,6 +10383,7 @@ var LineComponent = /** @class */ (function () {
     };
     LineComponent.prototype.updatePathEl = function () {
         var node = select(this.element.nativeElement).select('.line');
+        console.log(this.path);
         if (this.animations) {
             node
                 .transition().duration(750)
@@ -10889,11 +10890,9 @@ var LineSeriesComponent = /** @class */ (function () {
         if (this.hasGradient) {
             this.stroke = this.gradientUrl;
             var values = this.data.series.map(function (d) { return d.value; });
-            var max$$1 = Math.max.apply(Math, values);
-            var min$$1 = Math.min.apply(Math, values);
-            if (max$$1 === min$$1) {
-                this.stroke = this.colors.getColor(max$$1);
-            }
+            // if (max === min) {
+            //   this.stroke = this.colors.getColor(max);
+            // }
         }
         else {
             this.stroke = this.colors.getColor(this.data.name);
@@ -10973,7 +10972,7 @@ var LineSeriesComponent = /** @class */ (function () {
             var max$$1 = Math.max.apply(Math, values);
             var min$$1 = Math.min.apply(Math, values);
             this.gradientStops = this.colors.getLinearGradientStops(100, 0);
-            this.areaGradientStops = this.colors.getLinearGradientStops(max$$1);
+            this.areaGradientStops = this.colors.getLinearGradientStops(100);
         }
         else {
             this.hasGradient = false;
