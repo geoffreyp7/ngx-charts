@@ -104,11 +104,11 @@ export class LineSeriesComponent implements OnChanges {
     if (this.hasGradient) {
       this.stroke = this.gradientUrl;
       const values = this.data.series.map(d => d.value);
-      const max = 100; // Math.max(...values);
-      const min = 0; //Math.min(...values);
-      // if (max === min) {
-      //   this.stroke = this.colors.getColor(max);
-      // }
+      const max =  Math.max(...values);
+      const min = Math.min(...values);
+      if (max === min) {
+        this.stroke = this.colors.getColor(max);
+      }
     } else {
       this.stroke = this.colors.getColor(this.data.name);
     }
@@ -184,8 +184,8 @@ export class LineSeriesComponent implements OnChanges {
       const values = this.data.series.map(d => d.value);
       const max = Math.max(...values);
       const min = Math.min(...values);
-      this.gradientStops = this.colors.getLinearGradientStops(100, 0);
-      this.areaGradientStops = this.colors.getLinearGradientStops(100);
+      this.gradientStops = this.colors.getLinearGradientStops(max, min);
+      this.areaGradientStops = this.colors.getLinearGradientStops(max);
     } else {
       this.hasGradient = false;
       this.gradientStops = undefined;

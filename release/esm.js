@@ -10421,7 +10421,7 @@ var LineComponent = /** @class */ (function () {
     LineComponent = __decorate([
         Component({
             selector: 'g[ngx-charts-line]',
-            template: "\n    <svg:path\n      [@animationState]=\"'active'\"\n      class=\"line\"\n      [attr.d]=\"initialPath\"\n      [attr.fill]=\"fill\"\n      [attr.stroke]=\"stroke\"\n      stroke-width=\"1.5px\"\n    />\n  ",
+            template: "\n    <svg:path\n      [@animationState]=\"'active'\"\n      class=\"line\"\n      [attr.d]=\"initialPath\"\n      [attr.fill]=\"fill\"\n      [attr.stroke]=\"stroke\"\n      stroke-width=\"8px\"\n    />\n  ",
             changeDetection: ChangeDetectionStrategy.OnPush,
             animations: [
                 trigger('animationState', [
@@ -10890,9 +10890,11 @@ var LineSeriesComponent = /** @class */ (function () {
         if (this.hasGradient) {
             this.stroke = this.gradientUrl;
             var values = this.data.series.map(function (d) { return d.value; });
-            // if (max === min) {
-            //   this.stroke = this.colors.getColor(max);
-            // }
+            var max$$1 = Math.max.apply(Math, values);
+            var min$$1 = Math.min.apply(Math, values);
+            if (max$$1 === min$$1) {
+                this.stroke = this.colors.getColor(max$$1);
+            }
         }
         else {
             this.stroke = this.colors.getColor(this.data.name);
@@ -10971,8 +10973,8 @@ var LineSeriesComponent = /** @class */ (function () {
             var values = this.data.series.map(function (d) { return d.value; });
             var max$$1 = Math.max.apply(Math, values);
             var min$$1 = Math.min.apply(Math, values);
-            this.gradientStops = this.colors.getLinearGradientStops(100, 0);
-            this.areaGradientStops = this.colors.getLinearGradientStops(100);
+            this.gradientStops = this.colors.getLinearGradientStops(max$$1, min$$1);
+            this.areaGradientStops = this.colors.getLinearGradientStops(max$$1);
         }
         else {
             this.hasGradient = false;

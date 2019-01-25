@@ -14463,11 +14463,11 @@ var LineSeriesComponent = /** @class */ (function () {
         if (this.hasGradient) {
             this.stroke = this.gradientUrl;
             var values = this.data.series.map(function (d) { return d.value; });
-            var max = 100; // Math.max(...values);
-            var min = 0; //Math.min(...values);
-            // if (max === min) {
-            //   this.stroke = this.colors.getColor(max);
-            // }
+            var max = Math.max.apply(Math, values);
+            var min = Math.min.apply(Math, values);
+            if (max === min) {
+                this.stroke = this.colors.getColor(max);
+            }
         }
         else {
             this.stroke = this.colors.getColor(this.data.name);
@@ -14546,8 +14546,8 @@ var LineSeriesComponent = /** @class */ (function () {
             var values = this.data.series.map(function (d) { return d.value; });
             var max = Math.max.apply(Math, values);
             var min = Math.min.apply(Math, values);
-            this.gradientStops = this.colors.getLinearGradientStops(100, 0);
-            this.areaGradientStops = this.colors.getLinearGradientStops(100);
+            this.gradientStops = this.colors.getLinearGradientStops(max, min);
+            this.areaGradientStops = this.colors.getLinearGradientStops(max);
         }
         else {
             this.hasGradient = false;
@@ -14704,7 +14704,7 @@ var LineComponent = /** @class */ (function () {
     LineComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'g[ngx-charts-line]',
-            template: "\n    <svg:path\n      [@animationState]=\"'active'\"\n      class=\"line\"\n      [attr.d]=\"initialPath\"\n      [attr.fill]=\"fill\"\n      [attr.stroke]=\"stroke\"\n      stroke-width=\"1.5px\"\n    />\n  ",
+            template: "\n    <svg:path\n      [@animationState]=\"'active'\"\n      class=\"line\"\n      [attr.d]=\"initialPath\"\n      [attr.fill]=\"fill\"\n      [attr.stroke]=\"stroke\"\n      stroke-width=\"8px\"\n    />\n  ",
             changeDetection: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectionStrategy"].OnPush,
             animations: [
                 Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["trigger"])('animationState', [
