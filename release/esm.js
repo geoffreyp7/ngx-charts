@@ -2947,7 +2947,7 @@ var CircleSeriesComponent = /** @class */ (function () {
             cx = this.xScale(label);
         }
         var cy = this.yScale(this.type === 'standard' ? value : d.d1);
-        var radius = 5;
+        var radius = 20;
         var height = this.yScale.range()[0] - cy;
         var opacity = 1;
         var color;
