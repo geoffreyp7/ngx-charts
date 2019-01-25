@@ -14668,7 +14668,6 @@ var LineComponent = /** @class */ (function () {
     };
     LineComponent.prototype.updatePathEl = function () {
         var node = Object(__WEBPACK_IMPORTED_MODULE_2_d3_selection__["select"])(this.element.nativeElement).select('.line');
-        console.log(this.path);
         if (this.animations) {
             node
                 .transition().duration(750)
